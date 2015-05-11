@@ -1,5 +1,7 @@
 from django.db import models
 import datetime
+from month import forms
+from month import widgets
 
 def days(days):
     return datetime.timedelta(days=days)
@@ -78,6 +80,7 @@ class Month(object):
 
 class MonthField(models.DateField):
     description = "A specific month of a specific year."
+    widget = widgets.MonthSelectorWidget
     def to_python(self, value):
         if isinstance(value, Month):
             month = value
@@ -98,8 +101,12 @@ class MonthField(models.DateField):
     def from_db_value(self, value, expression, connection, context):
         return self.to_python(value)
 
-    def clean(self, value):
+    def clean(self, value, instance):
         return self.to_python(value)
+
+    def formfield(self, **kwargs):
+        del(kwargs['widget'])#This is a hack and I'm not sure why it is necessary.
+        return forms.MonthField(**kwargs)
 
 class Example(models.Model):
     name = models.CharField(max_length=20, blank=True)
