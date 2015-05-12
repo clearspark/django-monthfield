@@ -105,7 +105,12 @@ class MonthField(models.DateField):
         return self.to_python(value)
 
     def formfield(self, **kwargs):
-        del(kwargs['widget'])#This is a hack and I'm not sure why it is necessary.
+        #defaults = {'widget': self.widget}
+        #defaults.update(kwargs)
+        #return forms.MonthField(**defaults)
+
+        #The widget is allready being specified somewhere by models.DateField...
+        kwargs['widget'] = self.widget
         return forms.MonthField(**kwargs)
 
 class Example(models.Model):
