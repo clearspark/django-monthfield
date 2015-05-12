@@ -27,14 +27,19 @@ class Month(object):
         y = int(date[:4])
         m = int(date[5:7])
         return cls(y, m)
-    def __add__(self, months):
+    def __add__(self, x):
+        '''x is an integer'''
         return Month.from_int(int(self) + months)
-    def __sub__(self, months):
-        return Month.from_int(int(self) - months)
+    def __sub__(self, x):
+        '''x is integer or Month instance'''
+        if isinstance(x, Month):
+            return int(self) - int(x)
+        else:
+            return Month.from_int(int(self) - int(months))
     def next_month(self):
         return self + 1
     def prev_month(self):
-        return self + (-1)
+        return self - 1
     def first_day(self):
         return self._date
     def last_day(self):
