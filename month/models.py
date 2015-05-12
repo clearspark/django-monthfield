@@ -29,6 +29,8 @@ class Month(object):
         return cls(y, m)
     def __add__(self, months):
         return Month.from_int(int(self) + months)
+    def __sub__(self, months):
+        return Month.from_int(int(self) - months)
     def next_month(self):
         return self + 1
     def prev_month(self):
