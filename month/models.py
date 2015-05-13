@@ -35,7 +35,7 @@ class Month(object):
         if isinstance(x, Month):
             return int(self) - int(x)
         else:
-            return Month.from_int(int(self) - int(months))
+            return Month.from_int(int(self) - int(x))
     def next_month(self):
         return self + 1
     def prev_month(self):
