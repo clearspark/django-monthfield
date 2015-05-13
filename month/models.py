@@ -27,12 +27,19 @@ class Month(object):
         y = int(date[:4])
         m = int(date[5:7])
         return cls(y, m)
-    def __add__(self, months):
+    def __add__(self, x):
+        '''x is an integer'''
         return Month.from_int(int(self) + months)
+    def __sub__(self, x):
+        '''x is integer or Month instance'''
+        if isinstance(x, Month):
+            return int(self) - int(x)
+        else:
+            return Month.from_int(int(self) - int(x))
     def next_month(self):
         return self + 1
     def prev_month(self):
-        return self + (-1)
+        return self - 1
     def first_day(self):
         return self._date
     def last_day(self):
@@ -105,7 +112,12 @@ class MonthField(models.DateField):
         return self.to_python(value)
 
     def formfield(self, **kwargs):
-        del(kwargs['widget'])#This is a hack and I'm not sure why it is necessary.
+        #defaults = {'widget': self.widget}
+        #defaults.update(kwargs)
+        #return forms.MonthField(**defaults)
+
+        #The widget is allready being specified somewhere by models.DateField...
+        kwargs['widget'] = self.widget
         return forms.MonthField(**kwargs)
 
 class Example(models.Model):
