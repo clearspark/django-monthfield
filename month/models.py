@@ -119,9 +119,3 @@ class MonthField(models.DateField):
         #The widget is allready being specified somewhere by models.DateField...
         kwargs['widget'] = self.widget
         return forms.MonthField(**kwargs)
-
-class Example(models.Model):
-    name = models.CharField(max_length=20, blank=True)
-    month = MonthField()
-    def __unicode__(self):
-        return unicode(self.month)

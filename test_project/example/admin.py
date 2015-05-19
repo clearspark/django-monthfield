@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from month import models
+from example import models
 
 admin.site.register(models.Example)
 

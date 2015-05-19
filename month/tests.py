@@ -1,5 +1,6 @@
 from django.test import TestCase
-from month.models import Month, Example
+from month.models import Month
+from example.models import Example
 
 import datetime
 # Create your tests here.
