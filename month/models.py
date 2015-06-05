@@ -29,7 +29,7 @@ class Month(object):
         return cls(y, m)
     def __add__(self, x):
         '''x is an integer'''
-        return Month.from_int(int(self) + months)
+        return Month.from_int(int(self) + x)
     def __sub__(self, x):
         '''x is integer or Month instance'''
         if isinstance(x, Month):
