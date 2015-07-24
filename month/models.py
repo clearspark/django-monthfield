@@ -83,6 +83,12 @@ class Month(object):
         return self.__str__()
     def datestring(self):
         return self.first_day().isoformat()
+    def range(self, x):
+        '''x must be an instance of Month that is larger than self.
+        returns a list of Month objects that make up the timespan from self to x (inclusive)'''
+        months_as_ints = range(int(self), int(x) + 1)
+        return [ Month.from_int(i) for i in months_as_ints ]
+
 
 
 class MonthField(models.DateField):
