@@ -85,6 +85,7 @@ class Month(object):
         return hash(self.datestring())
     def datestring(self):
         return self.first_day().isoformat()
+    isoformat = datestring
     def range(self, x):
         '''x must be an instance of Month that is larger than self.
         returns a list of Month objects that make up the timespan from self to x (inclusive)'''
