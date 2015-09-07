@@ -81,6 +81,8 @@ class Month(object):
         return self.__str__()
     def __repr__(self):
         return self.__str__()
+    def __hash__(self):
+        return hash(self.datestring())
     def datestring(self):
         return self.first_day().isoformat()
     def range(self, x):
