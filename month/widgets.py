@@ -2,8 +2,12 @@
 Select widget for MonthField. Copied and modified from
 https://docs.djangoproject.com/en/1.8/ref/forms/widgets/#base-widget-classes
 """
+
 from datetime import date
+
 from django.forms import widgets
+from django.utils.dates import MONTHS
+
 from month.util import string_type
 
 
@@ -11,10 +15,8 @@ class MonthSelectorWidget(widgets.MultiWidget):
     def __init__(self, attrs=None):
         # create choices for days, months, years
         # example below, the rest snipped for brevity.
-        years = [(year, year) for year in range(1980, 2020)]
-        months = [ (month, month) for month in range(1, 13)]
         _widgets = (
-            widgets.Select(attrs=attrs, choices=months),
+            widgets.Select(attrs=attrs, choices=MONTHS.items()),
             # widgets.Select(attrs=attrs, choices=years),
             widgets.TextInput(attrs=attrs),
         )
