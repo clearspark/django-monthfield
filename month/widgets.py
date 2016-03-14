@@ -4,6 +4,8 @@ https://docs.djangoproject.com/en/1.8/ref/forms/widgets/#base-widget-classes
 """
 from datetime import date
 from django.forms import widgets
+from month.util import string_type
+
 
 class MonthSelectorWidget(widgets.MultiWidget):
     def __init__(self, attrs=None):
@@ -19,7 +21,7 @@ class MonthSelectorWidget(widgets.MultiWidget):
 
     def decompress(self, value):
         if value:
-            if isinstance(value, basestring):
+            if isinstance(value, string_type):
                 m = int(value[5:7])
                 y = int(value[:4])
                 return [ m, y ]

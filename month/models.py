@@ -1,8 +1,12 @@
+import datetime
+
 from django.db import models
+
 from month import forms
 from month import widgets
 from month import Month
-import datetime
+from month.util import string_type
+
 
 class MonthField(models.DateField):
     description = "A specific month of a specific year."
@@ -12,7 +16,7 @@ class MonthField(models.DateField):
             month = value
         elif isinstance(value, datetime.date):
             month = Month.from_date(value)
-        elif isinstance(value, basestring):
+        elif isinstance(value, string_type):
             month = Month.from_string(value)
         else:
             month = None

@@ -1,7 +1,11 @@
 import datetime
 
+from month.util import string_type
+
+
 def days(days):
     return datetime.timedelta(days=days)
+
 
 class Month(object):
     def __init__(self, year, month):
@@ -52,7 +56,7 @@ class Month(object):
             return self.year == x.year and self.month == x.month
         if isinstance(x, int):
             return x == int(self)
-        if isinstance(x, basestring):
+        if isinstance(x, string_type):
             return str(self) == x[:7]
     def __gt__(self, x):
         if isinstance(x, Month):
@@ -62,7 +66,7 @@ class Month(object):
             return self.first_day() > x
         if isinstance(x, int):
             return int(self) > x
-        if isinstance(x, basestring):
+        if isinstance(x, string_type):
             return str(self) > x[:7]
     def __ne__(self, x):
         return not self == x
