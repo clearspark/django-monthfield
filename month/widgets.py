@@ -9,7 +9,6 @@ from django.utils.dates import MONTHS
 from month.util import string_type
 
 
-
 class MonthSelectorWidget(widgets.MultiWidget):
     def __init__(self, attrs=None):
         # create choices for days, months, years
