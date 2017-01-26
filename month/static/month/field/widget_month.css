@@ -1,0 +1,8 @@
+.w-month-year {
+    width: 128px;
+    vertical-align: bottom;
+    float: left;
+}
+.w-year {
+    margin-left: 5px;
+}
