@@ -15,8 +15,7 @@ class MonthSelectorWidget(widgets.MultiWidget):
         # example below, the rest snipped for brevity.
         _widgets = (
             widgets.Select(attrs=attrs, choices=MONTHS.items()),
-            # widgets.Select(attrs=attrs, choices=years),
-            widgets.TextInput(attrs=attrs),
+            widgets.NumberInput(attrs=attrs),
         )
         super(MonthSelectorWidget, self).__init__(_widgets, attrs)
 
