@@ -1,4 +1,3 @@
 include LICENSE README.md
-include LICENSE
 recursive-include month/locale *
 recursive-include month/static *
