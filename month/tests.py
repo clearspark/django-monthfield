@@ -1,11 +1,15 @@
+import datetime
+
 from django.test import TestCase
 from month.models import Month
 from example.models import Example
 
-import datetime
-# Create your tests here.
 
 def TestMonthFunctions(TestCase):
+
+    def tearDown(self):
+        Example.objects.all().delete()
+
     def test_constructors(self):
         m = Month(2010, 1)
         self.assertEqual(m.year, 2010)
@@ -121,6 +125,7 @@ def TestMonthFunctions(TestCase):
         assert not m >= n
 
 class test_model_field(TestCase):
+
     def test_queries(self):
         e = Example(name='2010-01', month=Month(2010, 1))
         e.save()
@@ -170,9 +175,3 @@ class test_model_field(TestCase):
         qs = Example.objects.filter(month__gt='2005-12')
         assert qs.exists()
         assert qs.count() == 60
-    def tearDown(self):
-        Example.objects.all().delete()
-
-
-
-
