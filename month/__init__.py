@@ -28,6 +28,7 @@ class Month(object):
         y = int(date[:4])
         m = int(date[5:7])
         return cls(y, m)
+
     def __add__(self, x):
         '''x is an integer'''
         return Month.from_int(int(self) + x)
