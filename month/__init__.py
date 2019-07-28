@@ -22,7 +22,7 @@ class Month(object):
     @classmethod
     def from_date(cls, date):
         return cls(date.year, date.month)
-    
+
     @classmethod
     def from_string(cls, date):
         y = int(date[:4])
@@ -93,3 +93,6 @@ class Month(object):
         returns a list of Month objects that make up the timespan from self to x (inclusive)'''
         months_as_ints = range(int(self), int(x) + 1)
         return [ Month.from_int(i) for i in months_as_ints ]
+
+    def strftime(self, fmt):
+        return self._date.strftime(fmt)
