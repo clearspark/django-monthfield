@@ -42,7 +42,7 @@ class MonthField(models.DateField):
             return month.first_day()
         return None
 
-    def from_db_value(self, value, expression, connection, context):
+    def from_db_value(self, value, expression, connection):
         return self.to_python(value)
 
     def clean(self, value, instance):
