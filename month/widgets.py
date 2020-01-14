@@ -11,6 +11,11 @@ from month.util import string_type
 
 
 class MonthSelectorWidget(widgets.MultiWidget):
+    class Media:
+        css = {
+            'screen': ('month/field/widget_month.css', )
+        }
+
     def __init__(self, attrs=None):
         # create choices for days, months, years
         _attrs = attrs or {}  # default class
@@ -19,14 +24,6 @@ class MonthSelectorWidget(widgets.MultiWidget):
         _attrs['class'] += " w-year"
         _widgets.append(widgets.NumberInput(attrs=_attrs))
         super(MonthSelectorWidget, self).__init__(_widgets, attrs)
-
-    @property
-    def media(self):
-        media = self._get_media()
-        media.add_css({
-            'screen': (static('month/field/widget_month.css'),)
-        })
-        return media
 
     def decompress(self, value):
         if value:
