@@ -4,9 +4,9 @@ from setuptools import setup
 
 setup(
     name='django-monthfield',
-    version='0.1.3',
+    version='0.1.4',
     author=u'Matthys Kroon',
-    author_email='matthysk@clearspark.co.za',
+    author_email='matthysk@gmail.com',
     packages=['month'],
     include_package_data=True,
     url='https://github.com/clearspark/django-monthfield',
