@@ -14,7 +14,8 @@ This module also adds some arithmetic and other functionality for dealing with m
 Usage
 -----
 
-Adding a month field to a django model:
+1. Add `month` to your `INSTALLED_APPS` inside settings.py of your project.
+2. Adding a month field to a django model:
 
 .. code-block:: console
 
